@@ -1,0 +1,13 @@
+apiVersion: securitytower.io/v1alpha1
+kind: Application
+metadata:
+    name: demo-app
+spec:
+    stages:
+        - name: production
+          cluster:
+            repository: https://github.com/twecker137/aks-gitops.git
+            name: cluster-01d1593ea8
+          resources:
+            path: cluster/namespaces/demo-app
+          targetNamespace: demo-app
