@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: towe-nginx
+  namespace: default
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: towe-test
+      version: '0.1.0'
+      sourceRef:
+        kind: GitRepository
+        name: aks-gitops
+        namespace: flux-system
+      interval: 1m
+  values:
+    replicaCount: 2
